@@ -1,40 +1,45 @@
+// src/components/DetalleVentasList.js
+
 import React, { useEffect, useState } from 'react';
 import { getDetalleVentas, deleteDetalleVenta } from '../services/detalleVentasService';
+import '../styles/DetalleVentasList.css';
 
 const DetalleVentasList = () => {
   const [detalleVentas, setDetalleVentas] = useState([]);
 
-  // Cargar detalles de ventas al montar el componente
+  // cargar detalles de ventas al montar el componente
   useEffect(() => {
     cargarDetalleVentas();
   }, []);
 
+  // funcion para cargar detalles de ventas
   const cargarDetalleVentas = async () => {
     try {
       const data = await getDetalleVentas();
       setDetalleVentas(data);
     } catch (error) {
-      console.error('Error al cargar detalles de ventas', error);
+      console.error('error al cargar detalles de ventas', error);
     }
   };
 
+  // funcion para eliminar un detalle de venta
   const eliminarDetalleVenta = async (id) => {
     try {
       await deleteDetalleVenta(id);
-      cargarDetalleVentas(); // Recargar lista después de eliminar
+      cargarDetalleVentas(); // recargar lista despues de eliminar
     } catch (error) {
-      console.error('Error al eliminar detalle de venta', error);
+      console.error('error al eliminar detalle de venta', error);
     }
   };
 
   return (
-    <div>
-      <h2>Lista de Detalles de Ventas</h2>
+    <div className="detalle-ventas-list">
+      <h2>lista de detalles de ventas</h2>
       <ul>
         {detalleVentas.map((detalle) => (
           <li key={detalle.id}>
-            Detalle #{detalle.id} - Subtotal: ${detalle.subtotal}
-            <button onClick={() => eliminarDetalleVenta(detalle.id)}>Eliminar</button>
+            detalle #{detalle.id} - subtotal: ${detalle.subtotal}
+            <button onClick={() => eliminarDetalleVenta(detalle.id)}>eliminar</button>
           </li>
         ))}
       </ul>

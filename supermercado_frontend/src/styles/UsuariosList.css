@@ -1,16 +1,16 @@
-.venta-list {
+.user-list {
     list-style: none;
     padding: 0;
   }
   
-  .venta-item {
+  .user-item {
     display: flex;
     justify-content: space-between;
     padding: 10px;
     border-bottom: 1px solid #ccc;
   }
   
-  .venta-item button {
+  .user-item button {
     background-color: #ff0000;
     color: #ffffff;
     border: none;
@@ -19,7 +19,7 @@
     border-radius: 5px;
   }
   
-  .venta-item button:hover {
+  .user-item button:hover {
     background-color: #cc0000;
   }
   

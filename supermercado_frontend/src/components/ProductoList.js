@@ -1,40 +1,46 @@
+// src/components/ProductoList.js
+
 import React, { useEffect, useState } from 'react';
 import { getProductos, deleteProducto } from '../services/productosService';
+import '../styles/ProductoList.css';
 
 const ProductoList = () => {
   const [productos, setProductos] = useState([]);
 
-  // Cargar productos al montar el componente
+  // cargar productos al montar el componente
   useEffect(() => {
     cargarProductos();
   }, []);
 
+  // funcion para cargar productos
   const cargarProductos = async () => {
     try {
       const data = await getProductos();
+      console.log('Datos de productos:', data); // Verificar los datos recibidos
       setProductos(data);
     } catch (error) {
-      console.error('Error al cargar productos', error);
+      console.error('error al cargar productos', error);
     }
   };
 
+  // funcion para eliminar un producto
   const eliminarProducto = async (id) => {
     try {
       await deleteProducto(id);
-      cargarProductos(); // Recargar lista después de eliminar
+      cargarProductos(); // recargar lista despues de eliminar
     } catch (error) {
-      console.error('Error al eliminar producto', error);
+      console.error('error al eliminar producto', error);
     }
   };
 
   return (
-    <div>
-      <h2>Lista de Productos</h2>
+    <div className="producto-list">
+      <h2>lista de productos</h2>
       <ul>
         {productos.map((producto) => (
           <li key={producto.id}>
             {producto.nombre} - ${producto.precio}
-            <button onClick={() => eliminarProducto(producto.id)}>Eliminar</button>
+            <button onClick={() => eliminarProducto(producto.id)}>eliminar</button>
           </li>
         ))}
       </ul>

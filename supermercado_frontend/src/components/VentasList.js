@@ -1,40 +1,46 @@
+// src/components/VentasList.js
+
 import React, { useEffect, useState } from 'react';
 import { getVentas, deleteVenta } from '../services/ventasService';
+import '../styles/VentasList.css';
 
 const VentasList = () => {
   const [ventas, setVentas] = useState([]);
 
-  // Cargar ventas al montar el componente
+  // cargar ventas al montar el componente
   useEffect(() => {
     cargarVentas();
   }, []);
 
+  // funcion para cargar ventas
   const cargarVentas = async () => {
     try {
       const data = await getVentas();
+      console.log('Datos de ventas:', data); // Verificar los datos recibidos
       setVentas(data);
     } catch (error) {
-      console.error('Error al cargar ventas', error);
+      console.error('error al cargar ventas', error);
     }
   };
 
+  // funcion para eliminar una venta
   const eliminarVenta = async (id) => {
     try {
       await deleteVenta(id);
-      cargarVentas(); // Recargar lista después de eliminar
+      cargarVentas(); // recargar lista despues de eliminar
     } catch (error) {
-      console.error('Error al eliminar venta', error);
+      console.error('error al eliminar venta', error);
     }
   };
 
   return (
-    <div>
-      <h2>Lista de Ventas</h2>
+    <div className="ventas-list">
+      <h2>lista de ventas</h2>
       <ul>
         {ventas.map((venta) => (
           <li key={venta.id}>
-            Venta #{venta.id} - Total: ${venta.total}
-            <button onClick={() => eliminarVenta(venta.id)}>Eliminar</button>
+            venta #{venta.id} - total: ${venta.total}
+            <button onClick={() => eliminarVenta(venta.id)}>eliminar</button>
           </li>
         ))}
       </ul>

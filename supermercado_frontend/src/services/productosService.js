@@ -1,4 +1,5 @@
-import { fetchProductos } from '../api/api';
+// productosService.js
+import api from '../api/api';
 
 // Obtener todos los productos
 export const getProductos = async () => {

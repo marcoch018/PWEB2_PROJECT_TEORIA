@@ -1,3 +1,4 @@
+// ventasService.js
 import api from '../api/api';
 
 // Obtener todas las ventas
