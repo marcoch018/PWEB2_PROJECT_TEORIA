@@ -1,26 +1,32 @@
 // src/components/Productos.js
-
 import React, { useState, useEffect } from 'react';
-import api from '../api/api';
-import '../styles/Productos.css';
+import { getProductos } from '../services/productosService';
+import '../styles/ProductoList.css'; // Usa los mismos estilos que ProductoList
 
 const Productos = () => {
   const [productos, setProductos] = useState([]);
 
   useEffect(() => {
-    const fetchProductos = async () => {
-      const response = await api.get('productos/');
-      setProductos(response.data);
-    };
-    fetchProductos();
+    cargarProductos();
   }, []);
 
+  const cargarProductos = async () => {
+    try {
+      const data = await getProductos();
+      setProductos(data);
+    } catch (error) {
+      console.error('Error al cargar productos', error);
+    }
+  };
+
   return (
-    <div className="productos">
-      <h1>Lista de productos</h1>
+    <div className="producto-list">
+      <h2>Lista de productos</h2>
       <ul>
         {productos.map((producto) => (
-          <li key={producto.id}>{producto.nombre} - ${producto.precio}</li>
+          <li key={producto.id}>
+            {producto.nombre} - ${producto.precio}
+          </li>
         ))}
       </ul>
     </div>

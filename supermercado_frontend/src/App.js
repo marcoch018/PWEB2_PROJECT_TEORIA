@@ -18,6 +18,7 @@ const HomePage = () => (
     <header className="App-header">
       <h1>Supermercado Plaza Vea</h1>
       <nav className="navbar">
+        {/* Los enlaces de Login y Registro están visibles por defecto */}
         <Link to="/login">Iniciar Sesión</Link>
         <Link to="/registro">Registrarse</Link>
       </nav>
@@ -35,15 +36,25 @@ function App() {
   return (
     <Router>
       <div className="App">
-        {rol && <Navbar rol={rol} />} {/* añade Navbar y pasar el rol */}
+        {/* muestra Navbar solo si el usuario ha iniciado sesión */}
+        {rol && <Navbar rol={rol} />}
         {rol && <div className="user-info">Hola, {rol}</div>}
+
         <Routes>
+          {/* rutas públicas */}
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<Login setRol={setRol} />} />
           <Route path="/registro" element={<Registro />} />
+          
+          {/* visible siempre (sin importar rol) */}
+          <Route path="/productos" element={<Productos />} />
+
+          {/* rutas para 'usuario' */}
           {rol === 'usuario' && (
             <Route path="/productos" element={<Productos />} />
           )}
+
+          {/* rutas para 'empleado' */}
           {rol === 'empleado' && (
             <>
               <Route path="/producto-list" element={<ProductoList />} />
@@ -51,6 +62,8 @@ function App() {
               <Route path="/detalle-ventas" element={<DetalleVentasList />} />
             </>
           )}
+
+          {/* rutas para 'administrador' */}
           {rol === 'administrador' && (
             <>
               <Route path="/producto-list" element={<ProductoList />} />
@@ -62,6 +75,7 @@ function App() {
             </>
           )}
         </Routes>
+
         <footer className="footer">
           © 2024 Supermercado Plaza Vea
         </footer>
