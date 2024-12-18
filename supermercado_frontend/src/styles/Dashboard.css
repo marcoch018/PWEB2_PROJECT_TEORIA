@@ -1,5 +1,7 @@
 .dashboard {
   padding: 20px;
+  background-color: red;
+  border-radius: 10px;
 }
 
 .stats {
@@ -8,7 +10,9 @@
 }
 
 .stat {
-  background-color: #f0f0f0;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: bold;
+  background-color: yellow;
   padding: 10px;
   border-radius: 8px;
   text-align: center;

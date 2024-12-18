@@ -18,7 +18,7 @@ const Usuarios = () => {
 
   return (
     <div className="usuarios">
-      <h1>lista de usuarios</h1>
+      <h1>Lista de usuarios</h1>
       <ul>
         {usuarios.map((usuario) => (
           <li key={usuario.id}>{usuario.nombre} - {usuario.rol}</li>

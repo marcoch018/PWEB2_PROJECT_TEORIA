@@ -1,6 +1,8 @@
-.user-list {
+.usuarios-list {
     list-style: none;
     padding: 0;
+    background-color: #cc0000;
+    color: #ccc;
   }
   
   .user-item {

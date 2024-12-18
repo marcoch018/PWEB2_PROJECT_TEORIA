@@ -34,7 +34,7 @@ const DetalleVentasList = () => {
 
   return (
     <div className="detalle-ventas-list">
-      <h2>lista de detalles de ventas</h2>
+      <h2>Lista de Detalles de Ventas</h2>
       <ul>
         {detalleVentas.map((detalle) => (
           <li key={detalle.id}>

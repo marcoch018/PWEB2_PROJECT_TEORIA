@@ -1,6 +1,8 @@
-.venta-list {
+.ventas-list {
     list-style: none;
     padding: 0;
+    background-color: #cc0000;
+    color: #ccc;
   }
   
   .venta-item {

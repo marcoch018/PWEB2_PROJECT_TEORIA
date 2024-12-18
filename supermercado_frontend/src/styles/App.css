@@ -13,6 +13,8 @@ body {
   background-color: #ff0000; /* Color rojo de Plaza Vea */
   color: #ffffff;
   padding: 20px;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: bold;
   text-align: center;
 }
 
@@ -28,6 +30,18 @@ body {
   background-color: #ff0000;
   color: #ffffff;
   padding: 10px;
+}
+
+.navbar a {
+  color: #eeff00; /* Cambia a cualquier color deseado */
+  margin: 20px;
+  font-size: large;
+  font-family: 'Times New Roman', Times, serif;
+  text-decoration: none; /* Quitar subrayado */
+}
+
+.navbar a:hover {
+  text-decoration: none; /* Subrayar al pasar el mouse */
 }
 
 .footer {

@@ -35,7 +35,7 @@ const UsuariosList = () => {
 
   return (
     <div className="usuarios-list">
-      <h2>lista de usuarios</h2>
+      <h2>Lista de Usuarios</h2>
       <ul>
         {usuarios.map((usuario) => (
           <li key={usuario.id}>

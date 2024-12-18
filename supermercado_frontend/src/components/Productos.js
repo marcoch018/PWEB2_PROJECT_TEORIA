@@ -18,7 +18,7 @@ const Productos = () => {
 
   return (
     <div className="productos">
-      <h1>lista de productos</h1>
+      <h1>Lista de productos</h1>
       <ul>
         {productos.map((producto) => (
           <li key={producto.id}>{producto.nombre} - ${producto.precio}</li>
