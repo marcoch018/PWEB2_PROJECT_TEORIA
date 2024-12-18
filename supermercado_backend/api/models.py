@@ -22,6 +22,7 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
     ROLES = [
         ('administrador', 'Administrador'),
         ('empleado', 'Empleado'),
+        ('usuario', 'Usuario')
     ]
     nombre = models.CharField(max_length=100)
     email = models.EmailField(unique=True)
