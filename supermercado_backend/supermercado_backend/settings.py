@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'api',
     'corsheaders',
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
@@ -135,3 +136,9 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Prueba para: que modelo Usuario no limita los tipos de roles 
+# que pueda tener en el sistema, permite que el modelo Usuario 
+# maneje diferentes roles
+
+AUTH_USER_MODEL = 'api.Usuario'
