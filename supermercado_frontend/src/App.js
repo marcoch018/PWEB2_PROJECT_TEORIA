@@ -1,8 +1,8 @@
 // src/App.js
-
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import Productos from './components/Productos';  // Cambiado a Productos
+import Navbar from './components/Navbar';
+import Productos from './components/Productos';
 import ProductoList from './components/ProductoList';
 import UsuariosList from './components/UsuariosList';
 import VentasList from './components/VentasList';
@@ -35,6 +35,7 @@ function App() {
   return (
     <Router>
       <div className="App">
+        {rol && <Navbar rol={rol} />} {/* añade Navbar y pasar el rol */}
         {rol && <div className="user-info">Hola, {rol}</div>}
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -45,16 +46,16 @@ function App() {
           )}
           {rol === 'empleado' && (
             <>
-              <Route path="/productos" element={<ProductoList />} />
+              <Route path="/producto-list" element={<ProductoList />} />
               <Route path="/crear-producto" element={<CrearProducto />} />
               <Route path="/detalle-ventas" element={<DetalleVentasList />} />
             </>
           )}
           {rol === 'administrador' && (
             <>
-              <Route path="/productos" element={<ProductoList />} />
-              <Route path="/usuarios" element={<UsuariosList />} />
-              <Route path="/ventas" element={<VentasList />} />
+              <Route path="/producto-list" element={<ProductoList />} />
+              <Route path="/usuarios-list" element={<UsuariosList />} />
+              <Route path="/ventas-list" element={<VentasList />} />
               <Route path="/detalle-ventas" element={<DetalleVentasList />} />
               <Route path="/crear-producto" element={<CrearProducto />} />
               <Route path="/crear-usuario" element={<CrearUsuario />} />

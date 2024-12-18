@@ -12,6 +12,18 @@ class UsuarioViewSet(viewsets.ModelViewSet):
     queryset = Usuario.objects.all()
     serializer_class = UsuarioSerializer
 
+    def create(self, request, *args, **kwargs):
+        data = request.data.copy()
+        user = Usuario(
+            email=data['email'],
+            nombre=data['nombre'],
+            rol=data['rol']
+        )
+        user.set_password(data['password'])
+        user.save()
+        serializer = UsuarioSerializer(user)
+        return Response(serializer.data, status=201)
+
 class ProductoViewSet(viewsets.ModelViewSet):
     queryset = Producto.objects.all()
     serializer_class = ProductoSerializer
